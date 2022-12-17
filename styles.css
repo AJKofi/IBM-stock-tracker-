@@ -1,0 +1,20 @@
+.you{width: 500px;}
+#me{
+    font: 12pt monospace; margin: 0 auto; max-width: 350px; font-weight: 300px;
+   /* background-image: url(/graph.gif);
+    display:block;
+    align-items: center;
+    background-size:100%;
+    justify-content: center;
+    min-height: auto;*/
+}
+    
+    
+
+.hed { color: crimson; text-decoration: none;
+    
+ }
+/*.hed:hover, .hed:focus { background-color: rgb(31, 192, 184); color: #aaa; text-decoration: underline }*/
+
+.undl{text-decoration: underline;}
+.bck{background-color: rgb(49, 53, 52);}

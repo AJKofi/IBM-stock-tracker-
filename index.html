@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+<meta charset = "utf-8" >
+<meta name = "viewport" content= "width=device-width, initial-scale=1">
+<meta name = "description" content = "Basic Alpha Vantage script with user data entry" >
+<meta name = "keywords" content = "Alpha Vantage,predIQtiv,JavaScript,GitHub" >
+<meta name = "date" content = "2018-01-14" >
+<link rel="stylesheet" href="css/styles.css">
+<title>finance api</title>
+</head>
+<body id="me" background="imagex/bg.jpg">
+    <div class="you">
+        
+	<h1 class="hed">
+		
+		INTERNATIONAL BUSINESS MACHINES STOCK<span class="undl">X</span> TRACKER
+	</h1>
+
+	
+	<p>Symbol: &nbsp;<input id=inpSymbol value='IBM'></p>
+	<p><button onclick=getAlphaVantagedata(); >get STOCKX Data</button></p>
+
+	<div id = "divContents" >Data will appear here. This may take a number of seconds. Open the developer console to see more details.</div>
+
+    </div>
+
+<script class="bck">
+
+
+	const url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=demo';
+
+
+	function getAlphaVantagedata() {
+
+		const apiKey = "RVCPN0ZCQIQ0U1HH";
+
+		const symbol = inpSymbol.value;
+
+		const url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + symbol + '&interval=1min&apikey=' + apiKey;
+
+		requestFile( url );
+
+	}
+
+
+	function requestFile( url ) {
+
+		const xhr = new XMLHttpRequest();
+		xhr.open( 'GET', url, true );
+		xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
+		xhr.onprogress = function( xhr ) { console.log( 'bytes loaded:', xhr.loaded  ); }; /// or something
+		xhr.onload = callback;
+		xhr.send( null );
+
+		function callback( xhr ) {
+
+			let response, json, lines;
+
+			response = xhr.target.response;
+			divContents.innerText = response;
+
+			json = JSON.parse( response );
+
+console.log( 'json', json );
+
+		}
+
+	}
+
+
+</script>
+</body>
+</html>
